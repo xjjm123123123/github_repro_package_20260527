@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-pick-place-v3-no_mem-20260410-172719-seed1",
+  "task": "pick-place-v3",
+  "policy": "no_mem",
+  "episodes": 100,
+  "success_rate": 0.0,
+  "avg_steps": 200.0,
+  "avg_reward": 15.078864111452638,
+  "wall_time_sec": 18.501417636871338,
+  "generated": "2026-04-10T17:27:38"
+}

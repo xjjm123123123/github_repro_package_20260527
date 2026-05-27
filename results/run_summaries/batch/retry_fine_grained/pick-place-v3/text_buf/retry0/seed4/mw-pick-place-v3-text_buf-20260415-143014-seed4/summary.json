@@ -1,0 +1,17 @@
+{
+  "exp_id": "mw-pick-place-v3-text_buf-20260415-143014-seed4",
+  "task": "pick-place-v3",
+  "policy": "text_buf",
+  "controller": "PD",
+  "episodes": 60,
+  "success_rate": 0.7666666666666667,
+  "avg_steps": 200.0,
+  "avg_reward": 172.8722684146015,
+  "avg_grasp_attempts": 0.0,
+  "avg_grasp_success": 0.9666666666666667,
+  "avg_retry_count": 0.0,
+  "flash_every": 20,
+  "flash_len": 1,
+  "wall_time_sec": 12.171115398406982,
+  "generated": "2026-04-15T14:30:26"
+}

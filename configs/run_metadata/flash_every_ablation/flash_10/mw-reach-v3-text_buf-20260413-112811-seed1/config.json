@@ -1,0 +1,18 @@
+{
+  "task": "reach-v3",
+  "episodes": 60,
+  "max_steps": 200,
+  "seed": 1,
+  "policy": "text_buf",
+  "text_hist": 20,
+  "mem_k": 5,
+  "controller": "PD",
+  "po_noise_std": 0.01,
+  "po_keep_indices": "",
+  "flash_every": 10,
+  "flash_len": 1,
+  "max_retries": 0,
+  "no_perturbation": false,
+  "full_observable": false,
+  "run_dir": "runs/flash_every_ablation/flash_10"
+}

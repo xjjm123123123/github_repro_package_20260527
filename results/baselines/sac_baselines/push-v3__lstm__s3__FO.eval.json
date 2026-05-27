@@ -1,0 +1,13 @@
+{
+  "task": "push-v3",
+  "policy": "lstm",
+  "seed": 3,
+  "condition": "FO",
+  "po_mode": "weak",
+  "full_observable": true,
+  "flash_every": 5,
+  "flash_len": 1,
+  "episodes": 60,
+  "success_rate": 0.0,
+  "mean_reward": 20.570229519768382
+}

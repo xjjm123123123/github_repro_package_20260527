@@ -1,0 +1,13 @@
+condition,episodes,flash_every,flash_len,full_observable,mean_reward,memory_mode,po_mode,policy,seed,success_rate,task
+FO,60,5,1,True,1412.7370201656267,goal_buffer,weak,mlp,0,1.0,door-open-v3
+StrongPO,60,5,1,False,134.42409340483096,goal_buffer,strong,mlp,0,0.0,door-open-v3
+WeakPO,60,5,1,False,1450.3148714282308,goal_buffer,weak,mlp,0,1.0,door-open-v3
+FO,60,5,1,True,1612.8028093748399,goal_buffer,weak,mlp,0,0.9,reach-v3
+StrongPO,60,5,1,False,1424.0597341792536,goal_buffer,strong,mlp,0,0.9333333333333333,reach-v3
+WeakPO,60,5,1,False,1508.5244539284988,goal_buffer,weak,mlp,0,0.8666666666666667,reach-v3
+FO,60,5,1,True,1630.5808200150354,goal_buffer,weak,mlp,1,0.75,reach-v3
+StrongPO,60,5,1,False,1643.3489849463724,goal_buffer,strong,mlp,1,0.5166666666666667,reach-v3
+WeakPO,60,5,1,False,1693.1211627071566,goal_buffer,weak,mlp,1,0.8333333333333334,reach-v3
+FO,60,5,1,True,1745.7893022982234,goal_buffer,weak,mlp,2,0.6333333333333333,reach-v3
+StrongPO,60,5,1,False,1741.0433317135805,goal_buffer,strong,mlp,2,0.6333333333333333,reach-v3
+WeakPO,60,5,1,False,1784.035099463422,goal_buffer,weak,mlp,2,0.7666666666666667,reach-v3

@@ -1,0 +1,13 @@
+{
+  "task": "reach-v3",
+  "policy": "lstm",
+  "seed": 0,
+  "condition": "WeakPO",
+  "po_mode": "weak",
+  "full_observable": false,
+  "flash_every": 5,
+  "flash_len": 1,
+  "episodes": 60,
+  "success_rate": 0.0,
+  "mean_reward": 388.8931025593791
+}

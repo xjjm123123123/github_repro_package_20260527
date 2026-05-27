@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Cross-platform validation on Gymnasium-Robotics FetchReach-v4. Rule-based policies with the same FSM backbone and memory variants as Table~\ref{tab:main_results}, evaluated under FO and WeakPO. Mean over 3 seeds $\times$ 60 episodes. The same layered pattern emerges: NoMemory collapses under PO, while TextBuffer and StructMemory fully recover.}
+\label{tab:cross_platform}
+\begin{tabular}{l cc cc}
+\toprule
+& \multicolumn{2}{c}{FO} & \multicolumn{2}{c}{WeakPO} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+Memory & Success & Reward & Success & Reward \\
+\midrule
+NoMemory     & 100.0 & $-0.12$ & 15.6 & $-3.87$ \\
+TextBuffer   & 100.0 & $-0.12$ & \textbf{100.0} & $-0.12$ \\
+StructMemory & 100.0 & $-0.12$ & \textbf{100.0} & $-0.12$ \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize FetchReach-v4 uses a 3-DOF goal-reaching task with the Fetch robot arm. The PO protocol and flash schedule (\texttt{flash\_every=5}, \texttt{flash\_len=1}) are identical to MetaWorld experiments. The identical NM$\to$TB/SM recovery pattern confirms that the layered diagnostic findings generalize beyond MetaWorld.
+\end{flushleft}
+\end{table}

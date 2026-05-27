@@ -1,0 +1,8 @@
+plan=experiments/metaworld_structmem_plan.yaml
+policies=['no_mem', 'text_buf', 'struct_mem']
+seeds=[0, 1, 2, 3, 4]
+episodes_per_task=100
+po_noise_std=0.01
+po_keep_indices=(none)
+tasks.train=['reach-v3', 'push-v3', 'pick-place-v3', 'drawer-open-v3', 'sweep-v3']
+tasks.test_unseen=['door-open-v3', 'button-press-topdown-v3', 'faucet-open-v3', 'shelf-place-v3', 'basketball-v3']

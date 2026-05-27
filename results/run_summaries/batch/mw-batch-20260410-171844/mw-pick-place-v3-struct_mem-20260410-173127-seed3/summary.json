@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-pick-place-v3-struct_mem-20260410-173127-seed3",
+  "task": "pick-place-v3",
+  "policy": "struct_mem",
+  "episodes": 100,
+  "success_rate": 0.0,
+  "avg_steps": 200.0,
+  "avg_reward": 14.947859877934489,
+  "wall_time_sec": 18.902942419052124,
+  "generated": "2026-04-10T17:31:46"
+}

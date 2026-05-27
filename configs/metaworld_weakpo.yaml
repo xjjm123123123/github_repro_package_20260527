@@ -1,0 +1,21 @@
+environment:
+  name: MetaWorld
+  partial_observability:
+    mode: weak
+    noise:
+      std: 0.01
+tasks:
+  train:
+    - reach-v3
+    - push-v3
+    - pick-place-v3
+    - drawer-open-v3
+    - sweep-v3
+  test_unseen:
+    - door-open-v3
+    - button-press-topdown-v3
+    - faucet-open-v3
+    - shelf-place-v3
+evaluation:
+  seeds: [0, 1, 2, 3, 4]
+  episodes_per_task: 60

@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-faucet-open-v3-text_buf-20260410-174525-seed1",
+  "task": "faucet-open-v3",
+  "policy": "text_buf",
+  "episodes": 100,
+  "success_rate": 0.0,
+  "avg_steps": 200.0,
+  "avg_reward": 653.085417802396,
+  "wall_time_sec": 8.653510093688965,
+  "generated": "2026-04-10T17:45:34"
+}

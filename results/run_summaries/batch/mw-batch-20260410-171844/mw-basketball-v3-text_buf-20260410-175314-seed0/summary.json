@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-basketball-v3-text_buf-20260410-175314-seed0",
+  "task": "basketball-v3",
+  "policy": "text_buf",
+  "episodes": 100,
+  "success_rate": 0.15,
+  "avg_steps": 200.0,
+  "avg_reward": 136.82088365006584,
+  "wall_time_sec": 9.663530349731445,
+  "generated": "2026-04-10T17:53:24"
+}

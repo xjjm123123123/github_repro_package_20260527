@@ -1,0 +1,12 @@
+{
+  "task": "drawer-open-v3",
+  "episodes": 100,
+  "max_steps": 200,
+  "seed": 3,
+  "policy": "no_mem",
+  "text_hist": 20,
+  "mem_k": 5,
+  "po_noise_std": 0.01,
+  "po_keep_indices": "",
+  "run_dir": "runs/batch/mw-batch-20260410-171844"
+}

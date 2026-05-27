@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-drawer-open-v3-text_buf-20260410-173330-seed4",
+  "task": "drawer-open-v3",
+  "policy": "text_buf",
+  "episodes": 100,
+  "success_rate": 0.0,
+  "avg_steps": 200.0,
+  "avg_reward": 419.69118467377587,
+  "wall_time_sec": 7.740515232086182,
+  "generated": "2026-04-10T17:33:38"
+}

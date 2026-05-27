@@ -1,0 +1,13 @@
+{
+  "task": "door-open-v3",
+  "policy": "mlp",
+  "seed": 3,
+  "condition": "FO",
+  "po_mode": "weak",
+  "full_observable": true,
+  "flash_every": 5,
+  "flash_len": 1,
+  "episodes": 60,
+  "success_rate": 0.11666666666666667,
+  "mean_reward": 611.0918655958598
+}

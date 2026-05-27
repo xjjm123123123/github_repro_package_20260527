@@ -1,0 +1,11 @@
+tasks:
+  - sweep-v3
+  - door-open-v3
+policies:
+  - no_mem
+  - text_buf
+  - struct_mem
+flash_every: [1, 5, 10, 20, 50]
+flash_len: 1
+seeds: [0, 1, 2, 3, 4]
+episodes_per_task: 60

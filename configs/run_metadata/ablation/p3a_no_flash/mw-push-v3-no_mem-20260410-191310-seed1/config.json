@@ -1,0 +1,17 @@
+{
+  "task": "push-v3",
+  "episodes": 60,
+  "max_steps": 200,
+  "seed": 1,
+  "policy": "no_mem",
+  "text_hist": 20,
+  "mem_k": 5,
+  "controller": "PD",
+  "po_noise_std": 0.01,
+  "po_keep_indices": "",
+  "flash_every": 0,
+  "flash_len": 0,
+  "max_retries": 3,
+  "no_perturbation": false,
+  "run_dir": "runs/ablation/p3a_no_flash"
+}

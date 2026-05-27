@@ -1,0 +1,17 @@
+{
+  "exp_id": "mw-sweep-v3-struct_mem-20260415-140000-seed0",
+  "task": "sweep-v3",
+  "policy": "struct_mem",
+  "controller": "PD",
+  "episodes": 60,
+  "success_rate": 0.5833333333333334,
+  "avg_steps": 200.0,
+  "avg_reward": 547.6821923365576,
+  "avg_grasp_attempts": 0.0,
+  "avg_grasp_success": 0.0,
+  "avg_retry_count": 0.0,
+  "flash_every": 10,
+  "flash_len": 1,
+  "wall_time_sec": 10.56175684928894,
+  "generated": "2026-04-15T14:00:10"
+}

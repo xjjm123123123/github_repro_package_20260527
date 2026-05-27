@@ -1,0 +1,17 @@
+{
+  "exp_id": "mw-push-v3-struct_mem-20260413-113602-seed2",
+  "task": "push-v3",
+  "policy": "struct_mem",
+  "controller": "PD",
+  "episodes": 60,
+  "success_rate": 0.9333333333333333,
+  "avg_steps": 200.0,
+  "avg_reward": 1386.4900645101707,
+  "avg_grasp_attempts": 0.0,
+  "avg_grasp_success": 0.0,
+  "avg_retry_count": 0.0,
+  "flash_every": 20,
+  "flash_len": 1,
+  "wall_time_sec": 11.32393765449524,
+  "generated": "2026-04-13T11:36:13"
+}

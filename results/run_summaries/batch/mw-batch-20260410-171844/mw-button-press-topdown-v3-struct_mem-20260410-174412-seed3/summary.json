@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-button-press-topdown-v3-struct_mem-20260410-174412-seed3",
+  "task": "button-press-topdown-v3",
+  "policy": "struct_mem",
+  "episodes": 100,
+  "success_rate": 0.0,
+  "avg_steps": 200.0,
+  "avg_reward": 482.131918999336,
+  "wall_time_sec": 7.7451136112213135,
+  "generated": "2026-04-10T17:44:20"
+}

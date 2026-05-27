@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-drawer-open-v3-struct_mem-20260410-173407-seed3",
+  "task": "drawer-open-v3",
+  "policy": "struct_mem",
+  "episodes": 100,
+  "success_rate": 0.0,
+  "avg_steps": 200.0,
+  "avg_reward": 417.80356647417034,
+  "wall_time_sec": 7.738407611846924,
+  "generated": "2026-04-10T17:34:15"
+}

@@ -1,0 +1,17 @@
+{
+  "exp_id": "mw-pick-place-v3-struct_mem-20260410-191948-seed2",
+  "task": "pick-place-v3",
+  "policy": "struct_mem",
+  "controller": "PD",
+  "episodes": 60,
+  "success_rate": 0.16666666666666666,
+  "avg_steps": 200.0,
+  "avg_reward": 75.72334585576466,
+  "avg_grasp_attempts": 2.1666666666666665,
+  "avg_grasp_success": 1.0,
+  "avg_retry_count": 2.1666666666666665,
+  "flash_every": 20,
+  "flash_len": 1,
+  "wall_time_sec": 11.799899339675903,
+  "generated": "2026-04-10T19:20:00"
+}

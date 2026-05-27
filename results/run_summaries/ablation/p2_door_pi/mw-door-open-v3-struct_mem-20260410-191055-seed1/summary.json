@@ -1,0 +1,17 @@
+{
+  "exp_id": "mw-door-open-v3-struct_mem-20260410-191055-seed1",
+  "task": "door-open-v3",
+  "policy": "struct_mem",
+  "controller": "PD",
+  "episodes": 60,
+  "success_rate": 0.0,
+  "avg_steps": 200.0,
+  "avg_reward": 224.60099577771794,
+  "avg_grasp_attempts": 2.4,
+  "avg_grasp_success": 0.0,
+  "avg_retry_count": 2.4,
+  "flash_every": 20,
+  "flash_len": 1,
+  "wall_time_sec": 7.620475769042969,
+  "generated": "2026-04-10T19:11:03"
+}

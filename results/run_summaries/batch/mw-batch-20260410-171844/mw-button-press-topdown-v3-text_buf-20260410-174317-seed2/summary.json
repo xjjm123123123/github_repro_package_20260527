@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-button-press-topdown-v3-text_buf-20260410-174317-seed2",
+  "task": "button-press-topdown-v3",
+  "policy": "text_buf",
+  "episodes": 100,
+  "success_rate": 0.0,
+  "avg_steps": 200.0,
+  "avg_reward": 509.13978726659167,
+  "wall_time_sec": 7.788923025131226,
+  "generated": "2026-04-10T17:43:25"
+}

@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+wandb/
+checkpoints/
+runs/
+results/generated_runs/
+figures/*.tmp

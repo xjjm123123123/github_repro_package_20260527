@@ -1,0 +1,17 @@
+{
+  "exp_id": "mw-push-v3-no_mem-20260413-112908-seed1",
+  "task": "push-v3",
+  "policy": "no_mem",
+  "controller": "PD",
+  "episodes": 60,
+  "success_rate": 0.15,
+  "avg_steps": 200.0,
+  "avg_reward": 133.90010488403368,
+  "avg_grasp_attempts": 0.0,
+  "avg_grasp_success": 0.0,
+  "avg_retry_count": 0.0,
+  "flash_every": 10,
+  "flash_len": 1,
+  "wall_time_sec": 10.895545721054077,
+  "generated": "2026-04-13T11:29:19"
+}

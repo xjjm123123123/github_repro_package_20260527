@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-sweep-v3-struct_mem-20260410-173721-seed0",
+  "task": "sweep-v3",
+  "policy": "struct_mem",
+  "episodes": 100,
+  "success_rate": 0.0,
+  "avg_steps": 200.0,
+  "avg_reward": 233.30345614856674,
+  "wall_time_sec": 16.1145441532135,
+  "generated": "2026-04-10T17:37:37"
+}

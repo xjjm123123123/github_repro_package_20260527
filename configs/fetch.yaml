@@ -1,0 +1,16 @@
+tasks:
+  - FetchReach-v4
+  - FetchPush-v4
+  - FetchPickAndPlace-v4
+controllers:
+  - no_memory
+  - text_buffer
+  - struct_memory
+conditions:
+  - FO
+  - WeakPO
+  - StrongPO
+flash_every: 5
+flash_len: 1
+seeds: [0, 1, 2]
+episodes_per_task: 60

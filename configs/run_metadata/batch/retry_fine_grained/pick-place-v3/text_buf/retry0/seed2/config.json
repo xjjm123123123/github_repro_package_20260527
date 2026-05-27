@@ -1,0 +1,14 @@
+{
+  "task": "pick-place-v3",
+  "policy": "text_buf",
+  "max_retries": 0,
+  "flash_every": 20,
+  "flash_len": 1,
+  "seed": 2,
+  "episodes": 60,
+  "controller": "PD",
+  "full_observable": false,
+  "po_noise_std": 0.01,
+  "fsm_version": 1,
+  "force_aware": false
+}

@@ -1,0 +1,16 @@
+tasks:
+  - reach-v3
+  - door-open-v3
+policy:
+  - mlp
+memory_modes:
+  - none
+  - goal_buffer
+conditions:
+  - FO
+  - WeakPO
+  - StrongPO
+flash_every: 5
+flash_len: 1
+seeds: [0, 1, 2]
+episodes_per_task: 60

@@ -1,0 +1,130 @@
+# MetaWorld — Structured Memory for Partially-Observable Manipulation
+# Stage 9: EXPERIMENT_DESIGN (gate)
+#
+# Purpose:
+#   Evaluate whether a structured memory (objects, relations, subgoals, events)
+#   paired with a finite-state rule policy improves generalization in
+#   partially-observable MetaWorld tasks versus:
+#     - NoMemory (stateless rule policy)
+#     - TextBuffer (recent trajectory string summary; unstructured)
+#
+# Scope:
+#   - Simulation only (MetaWorld)
+#   - Vector-based partial observability (no GT object IDs/poses)
+#   - 1-month mid-size study
+#
+environment:
+  name: "MetaWorld"
+  version: "ML1/ML10-compatible"
+  partial_observability:
+    mode: "vector-only"            # no full GT state, no object IDs
+    keep_dims:                     # retain these obs components (example sketch)
+      - end_effector_pose          # ee position/orientation (low-dim)
+      - gripper_state              # open/close/contact signal if available
+      - relative_signal            # simple relative cues to nearest reachable point
+    drop_dims:
+      - object_global_pose         # full object pose / IDs removed
+      - semantic_segmentation      # no semantics
+      - depth_maps                 # not used in this study
+    noise:
+      type: "gaussian"
+      std: 0.01
+
+tasks:
+  train:
+    - reach-v2
+    - push-v2
+    - pick-place-v2
+    - drawer-open-v2
+    - sweep-v2
+  test_unseen:
+    - door-open-v2
+    - button-press-topdown-v2
+    - faucet-open-v2
+    - shelf-place-v2
+    - basketball-v2
+
+policy:
+  type: "finite_state_rule_policy"
+  primitives:
+    - reach(x)      # PD control to a waypoint
+    - align(n)      # align end-effector/approach normal
+    - grasp()       # close gripper with contact threshold
+    - move_to(x)    # Cartesian move
+    - release()     # open gripper
+    - reset()       # retreat to a neutral pose
+  controller:
+    type: "cartesian_pd"
+    gains:
+      kp: 5.0
+      kd: 0.1
+    gripper:
+      close_threshold: 0.6
+
+memory:
+  enabled: true
+  representation:
+    objects:        # slot-based, nearest-contact approximations (no IDs)
+      fields: [last_pose, contact, grasped]
+    relations:
+      types: [in_contact, adjacent, contained]
+    plan:
+      subgoals: ["g1", "g2", "g3"]    # placeholder; task-specific at runtime
+    events:
+      format: "(t, obs_sig, action, outcome)"
+  update:
+    frequency: "every_step"
+  retrieve:
+    k: 5
+
+baselines:
+  - name: "NoMemory"
+    description: "rule policy without any history"
+  - name: "TextBuffer"
+    description: "string summary of last H steps; no structure"
+    H: 20
+  - name: "StructMemory"
+    description: "proposed structured memory (this study)"
+
+ablations:
+  - name: "no_relations"
+    description: "remove relation edges"
+  - name: "no_plan"
+    description: "remove explicit subgoal list"
+  - name: "low_freq_update"
+    description: "update memory every K steps"
+    K: 5
+  - name: "k_variants"
+    description: "different retrieval top-k"
+    k_values: [0, 3, 5, 10]
+
+metrics:
+  primary: "success_rate"
+  secondary:
+    - "avg_steps"
+    - "avg_time"
+    - "failure_modes"     # categorical: grasp_fail/contact_loss/path_block
+  generalization:
+    success_gap: "success_test - success_train"
+    gap_ratio:  "success_test / max(1e-6, success_train)"
+
+evaluation:
+  seeds: [0, 1, 2, 3, 4]
+  episodes_per_task: 100
+  stats:
+    success_rate_ci: "bootstrap_95"
+    two_proportions_test: true            # z-test for success rate
+    paired_test: "mcnemar"                # for paired episode outcomes
+
+logging:
+  run_dir: "runs/metaworld_structmem"
+  save:
+    events_jsonl: true
+    metrics_jsonl: true
+    figures: true
+
+notes:
+  - "PO setting uses vector-only cues to force memory utility."
+  - "FSM primitives keep the control surface small enough for 1-month study."
+  - "Start with train-only smoke tests; expand to test-unseen after stability."
+

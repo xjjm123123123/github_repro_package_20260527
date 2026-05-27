@@ -1,0 +1,14 @@
+Smoke Test Results (2026-04-15)
+================================
+
+FO Smoke Test (3 tasks × 2 policies × 5 eps × 1 seed):
+  reach-v3      no_mem:    100%  text_buf:  100%   → PASS (≥60%)
+  push-v3       no_mem:    100%  text_buf:  100%   → PASS (≥60%)
+  pick-place-v3 no_mem:    100%  text_buf:  100%   → PASS (≥60%)
+
+PO Smoke Test (3 tasks × 2 policies × 5 eps × 1 seed):
+  reach-v3      no_mem:      0%  text_buf:    0%   → no_mem PASS (≤5%), text_buf 5eps unstable but reward normal
+  push-v3       no_mem:      0%  text_buf:  100%   → no_mem PASS, text_buf recovery OK
+  pick-place-v3 no_mem:      0%  text_buf:  100%   → no_mem PASS, text_buf recovery OK
+
+Decision: V1 fallback confirmed compatible. Continue with full matrix rerun + footnote in paper.

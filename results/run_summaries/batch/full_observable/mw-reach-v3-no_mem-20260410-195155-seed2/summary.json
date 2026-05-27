@@ -1,0 +1,17 @@
+{
+  "exp_id": "mw-reach-v3-no_mem-20260410-195155-seed2",
+  "task": "reach-v3",
+  "policy": "no_mem",
+  "controller": "PD",
+  "episodes": 60,
+  "success_rate": 0.8166666666666667,
+  "avg_steps": 200.0,
+  "avg_reward": 1843.2453977338002,
+  "avg_grasp_attempts": 0.0,
+  "avg_grasp_success": 0.0,
+  "avg_retry_count": 0.0,
+  "flash_every": 20,
+  "flash_len": 1,
+  "wall_time_sec": 6.171698570251465,
+  "generated": "2026-04-10T19:52:01"
+}

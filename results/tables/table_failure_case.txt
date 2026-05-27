@@ -1,0 +1,18 @@
+================================================================================
+TABLE 3: Failure Case — door-open-v3
+================================================================================
+
+door-open-v3 remains at 0% across all policies and controller types.
+This is classified as a failure case due to handle grasping difficulty,
+not a memory or controller issue.
+
+Policy          Controller   Success Rate    Grasp Att    Grasp OK    
+------------------------------------------------------------------
+no_mem          PD           0.0%            0.00         0.00        
+text_buf        PD           0.0%            0.00         0.00        
+struct_mem      PD           0.0%            0.00         0.00        
+
+Analysis:
+  - PD/PI controllers both yield 0% (P2 experiment)
+  - The system attempts grasps but never succeeds in holding the handle
+  - Root cause: handle contact dynamics, not controller gain or memory
