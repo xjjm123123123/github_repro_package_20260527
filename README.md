@@ -16,6 +16,8 @@ This repository implements controlled partial-observability diagnostics for robo
 
 The primary reproducible results are the controlled rule-based diagnostics. Learned-policy baselines are included as supplementary experiments and lightweight evaluation artifacts.
 
+Paper link: to be added via the official publication page / OpenReview entry.
+
 ## Repository Layout
 
 ```text
@@ -23,7 +25,6 @@ README.md
 LICENSE
 requirements.txt
 environment.yml
-paper/
 src/
 configs/
 scripts/
@@ -122,7 +123,7 @@ The lightweight package includes the Fetch evaluation scaffold and the cross-pla
 
 - This repository is organized as a reproducibility-oriented supplement, not as a full training platform.
 - The `src/legacy/` directory preserves the original experiment scripts so the repository stays close to the code that produced the bundled artifacts.
-- The camera-ready paper source and PDF remain under `paper/` for traceability, but the core supplementary value is the code, configs, and results.
+- This repository intentionally focuses on reproducibility artifacts and does not bundle the paper PDF or LaTeX source.
 
 ## Citation
 

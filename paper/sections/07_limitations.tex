@@ -1,6 +1,0 @@
-\section{Limitations}
-\label{sec:limitations}
-
-Our study has three main limitations. First, the tasks are drawn from MetaWorld with low-dimensional vector observations; high-dimensional visual observations may reveal different memory requirements. Second, the PO protocols are synthetic and periodic, whereas real-world PO may be stochastic and task-dependent. Third, the current tasks primarily require point memory, so tasks involving multiple objects, object identity, relational state, mechanism uncertainty, or ordered subgoals may produce a nonzero structure gap. We therefore do not claim a universal ranking of memory architectures or direct sim-to-real transfer of the tested controllers. The purpose of the controlled benchmark is narrower: to isolate whether PO failure is caused by loss of previously observed state, insufficient persistence, or hidden object state that requires estimation.
-
-Similarly, StrongPO should not be read as showing that memory is useless when object state is hidden. It is a boundary test: goal-only memory becomes insufficient, and the relevant next-step interventions are object-state estimation, object buffers, or belief estimation. The experiments bound where simple goal caching succeeds and where a different state-management layer is required.
