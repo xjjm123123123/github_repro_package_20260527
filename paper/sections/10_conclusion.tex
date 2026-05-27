@@ -1,0 +1,17 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+This paper studies rule-based manipulation under partial observability in MetaWorld V3 and arrives at three takeaways that form a layered progression:
+
+\textbf{Takeaway 1: Memory is necessary under PO, with a severity threshold.}
+The FO identification experiment confirms that the performance gap is caused by information loss rather than by policy incapacity. The Memory Necessity Curve further shows that memory becomes necessary only when the observation interval exceeds a critical threshold---at flash intervals of 5 steps, memory-free controllers can partially function; at 10 or above, they collapse.
+
+\textbf{Takeaway 2: Memory existence matters more than memory structure in the current regime.}
+Across all solvable tasks and all PO severities, \task{TextBuffer} and \task{StructMemory} produce virtually identical results. The current bottleneck lies at the existence layer (whether goal information is retained at all), not at the representation layer (how that information is organized). Structure would be expected to matter for tasks requiring sequential, relational, or long-horizon memory.
+
+\textbf{Takeaway 3: In multi-stage tasks, recovery cost becomes the new bottleneck.}
+On \task{pick-place-v3}, disabling retry improves success from 21.0\% to 73.7\% (+52.7pp). The mechanism is opportunity cost: each rollback forces re-traversal of expensive early stages, consuming the finite episode budget without progressing toward task completion.
+
+\task{door-open-v3} marks where this progression stops. The perception--execution gap (97.7\% pull entry, 0\% success) is orthogonal to memory and recovery, requiring contact-aware control capabilities beyond the current pipeline. This boundary does not invalidate the earlier takeaways but explicitly demarcates their scope.
+
+Taken together, the results support a simple framing: in PO manipulation, the system bottleneck shifts in a layered progression as task complexity increases, and each layer requires a different type of solution. A natural next step is to characterize the necessity-threshold curve for learned controllers under visual partial observability, and to extend the pipeline with explicit contact-state estimation for contact-rich tasks such as \task{door-open-v3}. The Discussion (Section~\ref{sec:discussion}) outlines the conditions under which the layered framework is expected to generalize beyond the rule-based setting studied here.

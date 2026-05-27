@@ -1,0 +1,17 @@
+{
+  "exp_id": "mw-sweep-v3-no_mem-20260415-135653-seed2",
+  "task": "sweep-v3",
+  "policy": "no_mem",
+  "controller": "PD",
+  "episodes": 60,
+  "success_rate": 0.0,
+  "avg_steps": 200.0,
+  "avg_reward": 519.4630053369393,
+  "avg_grasp_attempts": 0.0,
+  "avg_grasp_success": 0.0,
+  "avg_retry_count": 0.0,
+  "flash_every": 5,
+  "flash_len": 1,
+  "wall_time_sec": 11.290572881698608,
+  "generated": "2026-04-15T13:57:05"
+}

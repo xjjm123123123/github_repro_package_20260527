@@ -1,0 +1,27 @@
+\begin{table}[t]
+\centering
+\caption{Success rates (\%) on 9 MetaWorld tasks under Full-Observable (FO) and WeakPO conditions (\texttt{flash\_every}$=$20). Entries are mean $\pm$ std over 5 seeds $\times$ 60 episodes. \textbf{NM} = NoMemory, \textbf{TB} = TextBuffer, \textbf{SM} = StructMemory. $\dagger$ marks V1 FSM tasks; all others use V2 Goal-Relative FSM. $^{**}$ marks $p < 0.01$ for NM FO vs.\ WeakPO.}
+\label{tab:main_results}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l ccc c ccc c c}
+\toprule
+& \multicolumn{3}{c}{FO} & & \multicolumn{3}{c}{WeakPO} & & \\
+\cmidrule(lr){2-4} \cmidrule(lr){6-8}
+Task & NM & TB & SM & & NM & TB & SM & & NM $\Delta$(WeakPO$-$FO) \\
+\midrule
+\multicolumn{10}{l}{\textit{Core Tasks (V1 FSM)$^\dagger$}} \\
+Reach$^{**}$        & 82.3$\pm$9.5 & 82.3$\pm$9.5 & 82.3$\pm$9.5 & & 0.0$\pm$0.0 & 64.7$\pm$7.8 & 64.7$\pm$7.8 & & $-$82.3 \\
+Push$^{**}$         & 64.3$\pm$29.7 & 66.0$\pm$28.5 & 64.3$\pm$29.7 & & 0.0$\pm$0.0 & 65.7$\pm$26.7 & 64.3$\pm$28.0 & & $-$64.3 \\
+Pick-Place$^{**}$   & 74.0$\pm$7.1 & 74.0$\pm$7.1 & 74.0$\pm$7.1 & & 0.0$\pm$0.0 & 74.7$\pm$5.5 & 74.7$\pm$5.5 & & $-$74.0 \\
+\midrule
+\multicolumn{10}{l}{\textit{Extended Tasks (V2 Goal-Relative FSM)}} \\
+Door-Open$^{**}$    & 90.3$\pm$5.7 & 91.0$\pm$5.1 & 90.3$\pm$5.7 & & 0.0$\pm$0.0 & 90.7$\pm$5.6 & 90.7$\pm$5.2 & & $-$90.3 \\
+Drawer-Open$^{**}$  & 100.0$\pm$0.0 & 100.0$\pm$0.0 & 100.0$\pm$0.0 & & 0.0$\pm$0.0 & 100.0$\pm$0.0 & 100.0$\pm$0.0 & & $-$100.0 \\
+Faucet-Open$^{**}$  & 56.3$\pm$5.6 & 54.0$\pm$3.8 & 56.3$\pm$5.6 & & 2.3$\pm$2.2 & 54.0$\pm$3.8 & 56.0$\pm$4.9 & & $-$54.0 \\
+Button-Press        & 60.3$\pm$13.2 & 59.7$\pm$15.2 & 60.3$\pm$13.2 & & 61.3$\pm$13.9 & 60.7$\pm$13.3 & 58.7$\pm$15.2 & & $+$1.0 \\
+Sweep$^{**}$        & 52.0$\pm$3.0 & 52.0$\pm$3.2 & 52.0$\pm$3.0 & & 0.0$\pm$0.0 & 51.0$\pm$3.2 & 51.7$\pm$2.4 & & $-$52.0 \\
+Shelf-Place$^{**}$  & 89.0$\pm$6.3 & 84.7$\pm$5.2 & 89.0$\pm$6.3 & & 0.0$\pm$0.0 & 84.7$\pm$5.1 & 89.0$\pm$6.3 & & $-$89.0 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}

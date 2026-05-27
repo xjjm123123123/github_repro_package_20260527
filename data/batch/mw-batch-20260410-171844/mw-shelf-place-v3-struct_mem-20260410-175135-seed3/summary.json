@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-shelf-place-v3-struct_mem-20260410-175135-seed3",
+  "task": "shelf-place-v3",
+  "policy": "struct_mem",
+  "episodes": 100,
+  "success_rate": 0.0,
+  "avg_steps": 200.0,
+  "avg_reward": 0.18554683294139923,
+  "wall_time_sec": 21.19162607192993,
+  "generated": "2026-04-10T17:51:56"
+}

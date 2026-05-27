@@ -1,0 +1,27 @@
+\begin{table}[t]
+\centering
+\caption{Success rates (\%) under varying goal flash frequency (\texttt{flash\_every}). Mean $\pm$ std over 5 seeds $\times$ 60 episodes. At \texttt{flash\_every}=$k$, the goal is visible for 1 step every $k$ steps; $k$=1 means goal visible every step (FO equivalent).}
+\label{tab:flash_every}
+\begin{tabular}{l ccc}
+\toprule
+flash\_every & NoMemory & TextBuffer & StructMemory \\
+\midrule
+\multicolumn{4}{l}{\textit{Reach-v3}} \\
+1  & 82.3$\pm$9.5 & 82.3$\pm$9.5 & 82.3$\pm$9.5 \\
+5  & 38.7$\pm$9.5 & 75.0$\pm$6.4 & 75.0$\pm$6.4 \\
+10 & 4.0$\pm$8.0 & 73.7$\pm$9.5 & 73.7$\pm$9.5 \\
+20 & 0.0$\pm$0.0 & 69.7$\pm$6.1 & 69.7$\pm$6.1 \\
+50 & 0.0$\pm$0.0 & 60.0$\pm$7.1 & 60.0$\pm$7.1 \\
+\midrule
+\multicolumn{4}{l}{\textit{Door-Open-v3}} \\
+1  & 90.3$\pm$5.7 & 91.0$\pm$5.1 & 90.3$\pm$5.7 \\
+5  & 0.0$\pm$0.0 & 91.0$\pm$5.1 & 90.7$\pm$5.2 \\
+10 & 0.0$\pm$0.0 & 90.7$\pm$5.6 & 91.0$\pm$4.8 \\
+20 & 0.0$\pm$0.0 & 90.7$\pm$5.6 & 90.7$\pm$5.2 \\
+50 & 0.0$\pm$0.0 & 91.0$\pm$5.1 & 91.0$\pm$4.8 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize Push-v3, Pick-Place-v3, and Sweep-v3 show the same pattern: NoMemory degrades with increasing flash interval while TextBuffer/StructMemory remain stable. Full results are in the appendix.
+\end{flushleft}
+\end{table}

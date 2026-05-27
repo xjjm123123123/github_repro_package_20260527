@@ -1,0 +1,13 @@
+{
+  "task": "push-v3",
+  "policy": "mlp",
+  "seed": 1,
+  "condition": "WeakPO",
+  "po_mode": "weak",
+  "full_observable": false,
+  "flash_every": 5,
+  "flash_len": 1,
+  "episodes": 60,
+  "success_rate": 0.016666666666666666,
+  "mean_reward": 15.82623606095561
+}

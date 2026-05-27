@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-sweep-v3-no_mem-20260410-173443-seed1",
+  "task": "sweep-v3",
+  "policy": "no_mem",
+  "episodes": 100,
+  "success_rate": 0.0,
+  "avg_steps": 200.0,
+  "avg_reward": 174.02642490689752,
+  "wall_time_sec": 15.45819354057312,
+  "generated": "2026-04-10T17:34:58"
+}

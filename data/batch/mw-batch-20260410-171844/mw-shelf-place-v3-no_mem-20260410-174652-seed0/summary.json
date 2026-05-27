@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-shelf-place-v3-no_mem-20260410-174652-seed0",
+  "task": "shelf-place-v3",
+  "policy": "no_mem",
+  "episodes": 100,
+  "success_rate": 0.0,
+  "avg_steps": 200.0,
+  "avg_reward": 7.483606520615049,
+  "wall_time_sec": 19.238311052322388,
+  "generated": "2026-04-10T17:47:11"
+}

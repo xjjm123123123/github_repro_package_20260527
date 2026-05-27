@@ -1,0 +1,14 @@
+{
+  "task": "reach-v3",
+  "policy": "mlp",
+  "seed": 2,
+  "condition": "WeakPO",
+  "po_mode": "weak",
+  "full_observable": false,
+  "flash_every": 5,
+  "flash_len": 1,
+  "memory_mode": "goal_buffer",
+  "episodes": 60,
+  "success_rate": 0.7666666666666667,
+  "mean_reward": 1784.035099463422
+}

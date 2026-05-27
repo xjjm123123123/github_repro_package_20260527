@@ -1,0 +1,18 @@
+{
+  "task": "pick-place-v3",
+  "episodes": 60,
+  "max_steps": 200,
+  "seed": 2,
+  "policy": "no_mem",
+  "text_hist": 20,
+  "mem_k": 5,
+  "controller": "PD",
+  "po_noise_std": 0.01,
+  "po_keep_indices": "",
+  "flash_every": 20,
+  "flash_len": 1,
+  "max_retries": 0,
+  "no_perturbation": false,
+  "full_observable": false,
+  "run_dir": "runs/flash_every_ablation/flash_20"
+}

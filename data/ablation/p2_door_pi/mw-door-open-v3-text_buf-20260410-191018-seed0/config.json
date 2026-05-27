@@ -1,0 +1,17 @@
+{
+  "task": "door-open-v3",
+  "episodes": 60,
+  "max_steps": 200,
+  "seed": 0,
+  "policy": "text_buf",
+  "text_hist": 20,
+  "mem_k": 5,
+  "controller": "PI",
+  "po_noise_std": 0.01,
+  "po_keep_indices": "",
+  "flash_every": 20,
+  "flash_len": 1,
+  "max_retries": 3,
+  "no_perturbation": false,
+  "run_dir": "runs/ablation/p2_door_pi"
+}

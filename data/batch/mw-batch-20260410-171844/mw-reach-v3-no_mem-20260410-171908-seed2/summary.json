@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-reach-v3-no_mem-20260410-171908-seed2",
+  "task": "reach-v3",
+  "policy": "no_mem",
+  "episodes": 100,
+  "success_rate": 0.65,
+  "avg_steps": 200.0,
+  "avg_reward": 1824.2704298817255,
+  "wall_time_sec": 9.729291439056396,
+  "generated": "2026-04-10T17:19:18"
+}

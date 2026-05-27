@@ -1,0 +1,22 @@
+================================================================================
+TABLE 2: Key Ablation Results
+================================================================================
+
+Ablation A: No goal flashing (flash_every=0)
+Task                 NoMemory        TextBuffer      StructMemory   
+-----------------------------------------------------------------
+pick-place-v3        0.0%            18.9%           21.1%           
+push-v3              0.0%            71.1%           70.0%           
+reach-v3             0.0%            65.0%           65.0%           
+
+Ablation B: No retry (max_retries=0)
+Task                 TextBuffer      StructMemory    vs Old (pp)    
+-----------------------------------------------------------------
+door-open-v3         0.0%            0.0%            +0.0pp
+pick-place-v3        71.7%           71.7%           +50.7pp
+
+Ablation C: No XY perturbation
+Task                 With Perturb    No Perturb      Delta (pp)     
+-----------------------------------------------------------------
+door-open-v3         0.0%            0.0%            —
+pick-place-v3        20.6%           20.6%           —

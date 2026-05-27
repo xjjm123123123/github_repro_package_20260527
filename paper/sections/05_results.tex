@@ -1,0 +1,42 @@
+\section{Results}
+\label{sec:results}
+
+We organize the results as the same layered diagnostic procedure introduced above. Layer 1 tests whether WeakPO creates an information bottleneck; Layers 2--3 test whether persistence is sufficient and whether structure changes the diagnosis; the final layer tests whether recovery is worth its finite-horizon cost. StrongPO then marks where the bottleneck shifts beyond goal-only memory.
+
+\subsection{Memory Is Necessary (Layer 1)}
+
+Diagnostic Layer 1 asks whether removing memory exposes a meaningful information bottleneck under WeakPO.
+
+Table~\ref{tab:main_results} shows that \task{NoMemory} collapses under WeakPO in 7/9 tasks ($p < 0.01$). The main exception is Button-Press, whose downward motion is strongly constrained by geometry and appears nearly goal-independent ($G=-0.01$). The resulting memory gap $\Delta_{\text{mem}}$ spans 0.0--1.0, suggesting that PO usually introduces a substantial information bottleneck in this suite.
+
+\input{tables/table1_main_results}
+
+\subsection{Simple Persistence Is Sufficient for the Current Single-Goal Task Family (Layers 2--3)}
+
+Diagnostic Layers 2--3 ask whether explicit persistence is enough once Layer 1 has established a bottleneck, and whether additional structure changes that diagnosis.
+
+Both \task{TextBuffer} and \task{StructMemory} restore WeakPO performance to 51--100\% (Table~\ref{tab:main_results}), with $\Delta_{\text{struct}}<0.05$ and no significant difference across all 9 tasks. This suggests that, in the current single-goal suite, the decisive factor is persistence rather than richer organization of that memory. The same pattern holds in the sequential multi-goal setting (Table~\ref{tab:multi_goal} in the appendix), so the current suite appears to require only \emph{point memory}. Under StrongPO, however, all three goal-only variants collapse to 0\% across the 9 tasks (Appendix A.7), marking the boundary of the current goal-only intervention: once object position is also hidden, goal persistence alone is insufficient, and the next diagnostic layer should consider object-state buffers or belief estimation.
+
+\input{figures/fig_goal_dependency}
+
+\paragraph{Door-Open as a boundary case.}
+Door-Open-v3 provides the strongest example of where Layer 1 and Layers 2--3 separate cleanly. In Table~\ref{tab:main_results}, \task{NoMemory} drops from 90.3\% under FO to 0.0\% under WeakPO, while both memory variants stay near 91\%, so the task is highly sensitive to losing the goal but comparatively insensitive to how that goal is stored. Figure~\ref{fig:flash_every} in the appendix sharpens this point: \task{NoMemory} already collapses at \texttt{flash\_every}$=5$, whereas \task{TextBuffer} and \task{StructMemory} overlap throughout. The same task also marks the StrongPO boundary, where all three goal-only variants collapse to 0\% once object state is hidden.
+
+\subsection{Implicit Recurrent Memory vs.\ Explicit Persistence}
+\label{sec:lstm_vs_goalbuffer}
+
+This diagnostic layer asks whether implicit recurrent memory can substitute for explicit persistence once the need for memory has been established.
+
+Table 2 and Figures 3--4 in Appendix A.1 compare learned and explicit memory. FO-trained SAC-MLP reaches 78.9--100\% under FO but collapses to 0--1.1\% under WeakPO. SAC-LSTM provides partial robustness on Reach-v3 (42.2\%) and highly variable behavior on Faucet-Open-v3 ($\sigma=41.4\%$), while a zero-cost GoalBuffer recovers WeakPO to 82.2--100\% on five tasks without retraining. In this diagnostic reading, implicit recurrent memory does not appear to reliably replace explicit persistence for the present observation-masking intervention, although the comparison remains limited to these tasks and training settings.
+
+\subsection{Recovery and Finite-Horizon Cost}
+\label{sec:recovery_cost}
+
+This recovery layer asks whether adding recovery behavior is worth its finite-horizon cost.
+
+Retry provides no measurable benefit on single-phase tasks and reduces performance on Pick-Place: under a 200-step budget, rollback consumes steps needed for the place phase ($-54.4$pp; Table~\ref{tab:retry} in the appendix). For the current horizon and task structure, the evidence suggests that recovery is usually not worth its cost unless the expected gain from correcting an earlier failure exceeds the steps spent on rollback. Figure~\ref{fig:flash_every} in the appendix further shows that the WeakPO bottleneck scales smoothly with flash sparsity.
+
+\paragraph{Cross-platform sanity-check.}
+Table~\ref{tab:cross_platform} in the appendix repeats the rule-based protocol on FetchReach-v4 and FetchPush-v4. Despite the different robot platform and task suite, the same layered pattern reappears: \task{NoMemory} degrades under WeakPO, while both memory variants recover to FO-level performance. This small sanity-check is consistent with the MetaWorld diagnosis that the main bottleneck is hidden state, and that carrying the missing goal information forward matters more here than the particular organization imposed on that memory.
+
+\FloatBarrier

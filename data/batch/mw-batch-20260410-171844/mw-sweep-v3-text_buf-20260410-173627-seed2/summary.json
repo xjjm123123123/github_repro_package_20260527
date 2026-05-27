@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-sweep-v3-text_buf-20260410-173627-seed2",
+  "task": "sweep-v3",
+  "policy": "text_buf",
+  "episodes": 100,
+  "success_rate": 0.0,
+  "avg_steps": 200.0,
+  "avg_reward": 186.31300394806965,
+  "wall_time_sec": 16.86160683631897,
+  "generated": "2026-04-10T17:36:44"
+}

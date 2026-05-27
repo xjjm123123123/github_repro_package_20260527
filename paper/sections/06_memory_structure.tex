@@ -1,0 +1,35 @@
+\section{Memory Existence Matters More Than Memory Structure}
+\label{sec:memory-structure}
+
+Section~\ref{sec:po-identification} established that the performance gap is primarily caused by partial observability and that persistent memory becomes necessary above a severity threshold. This section addresses a natural follow-up question: given that memory is necessary, does the \emph{structure} of that memory matter? In particular, why do \task{TextBuffer} and \task{StructMemory}---which differ substantially in representational complexity---produce nearly identical results?
+
+\subsection{Observation: TextBuffer $\approx$ StructMemory}
+
+As shown in Table~\ref{tab:main-results}, \task{TextBuffer} and \task{StructMemory} achieve virtually identical success rates on all three solvable tasks: $69.7 \pm 6.1\%$ vs.\ $69.7 \pm 6.1\%$ on \task{reach-v3}, $66.7 \pm 25.1\%$ vs.\ $64.7 \pm 26.1\%$ on \task{push-v3}, and $73.7 \pm 7.6\%$ vs.\ $73.7 \pm 7.6\%$ on \task{pick-place-v3}. The differences are within noise and do not support any claim that one representation dominates the other.
+
+\subsection{Cross-Condition Robustness}
+
+This observation is robust across multiple controls and condition changes. Under full observability (Figure~\ref{fig:fo-control}), all three policies converge, ruling out a hidden controller capacity explanation. Under varying PO severity (Table~\ref{tab:flash-every}), \task{TextBuffer} and \task{StructMemory} remain within a few percentage points of each other across all flash intervals tested. The extended task suite provides an additional confirmation (Table~\ref{tab:extended-tasks}): on basketball-v3, \task{TextBuffer} reaches $53.9 \pm 2.1\%$ and \task{StructMemory} reaches $52.8 \pm 3.1\%$ (gap 1.1pp), while the remaining tasks stay at $0\%$ for all policies.
+
+\input{tables/table5_extended_tasks}
+\FloatBarrier
+
+\subsection{Explanation}
+
+The functional equivalence of \task{TextBuffer} and \task{StructMemory} is not a failure of the structured representation. Rather, it reflects a property of the current task suite: the three solvable tasks (\task{reach-v3}, \task{push-v3}, \task{pick-place-v3}) and \task{basketball-v3} require the controller to retain a single piece of task-relevant state---the goal position---across observation gaps. For this requirement, a lightweight text buffer and a more explicit structured representation provide the same functional benefit: persistent access to the goal.
+
+In the current experiments, only this retained goal information is functionally used by the controller. The additional structured fields (\texttt{fsm\_state}, \texttt{retry\_count}, \texttt{did\_rollback}) are recorded for analysis, but they do not differentially influence online decisions. This is why the present evidence supports ``memory existence matters more than memory structure'' rather than a claim about representational superiority.
+
+The key insight is that the current bottleneck lies at the \emph{existence} layer (whether goal information is retained at all) rather than at the \emph{representation} layer (how that information is organized). When the dominant failure mode is complete information loss, any mechanism that prevents that loss will suffice.
+
+\subsection{When Might Structure Begin To Matter?}
+
+The current evidence does not imply that memory structure is irrelevant in general. Structure would be expected to matter when tasks require:
+
+\begin{itemize}
+\item \textbf{Sequential memory}: remembering the order of past actions or observations, not just a static goal.
+\item \textbf{Relational memory}: tracking relationships between multiple objects or subgoals.
+\item \textbf{Long-horizon planning}: maintaining a plan state that evolves across many stages.
+\end{itemize}
+
+The current task suite does not exercise these requirements. The observation that TB$\approx$SM therefore serves as a boundary datum: it identifies the regime in which memory existence, not memory structure, is the dominant factor. This boundary is itself a contribution, because it tells future designers when to invest in structured representations and when a simpler persistent buffer suffices.

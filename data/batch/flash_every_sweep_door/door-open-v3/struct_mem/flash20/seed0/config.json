@@ -1,0 +1,14 @@
+{
+  "task": "door-open-v3",
+  "policy": "struct_mem",
+  "flash_every": 20,
+  "flash_len": 1,
+  "seed": 0,
+  "episodes": 60,
+  "controller": "PD",
+  "full_observable": false,
+  "po_noise_std": 0.01,
+  "max_retries": 0,
+  "fsm_version": 2,
+  "force_aware": true
+}

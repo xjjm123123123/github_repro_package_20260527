@@ -1,0 +1,16 @@
+\section{Experimental Setup}
+\label{sec:experimental-setup}
+
+We evaluate 9 MetaWorld \citep{Yu2020} tasks with vector observations to separate information loss, memory retention, and recovery cost under a shared PO protocol.
+
+\subsection{Tasks}
+
+\textbf{Core tasks} (3 tasks, V1 FSM): \task{reach-v3}, \task{push-v3}, \task{pick-place-v3}. \textbf{Contact-rich tasks} (6 tasks, V2 Goal-Relative FSM): \task{door-open-v3}, \task{drawer-open-v3}, and \task{faucet-open-v3}. The remaining contact-rich tasks are \task{button-press-topdown-v3}, \task{sweep-v3}, and \task{shelf-place-v3}. We omit \task{basketball-v3} because it largely duplicates the staged transport structure of \task{pick-place-v3} while adding little variation in memory demand.
+
+\subsection{Evaluation Protocol}
+
+Rule-based experiments use 5 seeds; learned policies and cross-platform checks use 3; each seed runs 60 episodes with a 200-step cap. Success rate is the primary metric, standard deviation is reported throughout, and permutation tests assess significance \citep{Good2005}.
+
+\subsection{Learned Policy Baselines}
+
+To test whether learned policies show the same PO vulnerability, we train SAC \citep{Haarnoja2018} agents with MLP and LSTM \citep{Hochreiter1997} backbones for 500K--2M steps under FO or PO, then evaluate them under FO, WeakPO, and StrongPO. We additionally test a zero-cost GoalBuffer that caches the last visible goal and restores masked goal dimensions at evaluation time. For a small cross-platform check, Table~\ref{tab:cross_platform} in the appendix repeats the rule-based protocol on FetchReach-v4 and FetchPush-v4 \citep{DeLazcano2023}.

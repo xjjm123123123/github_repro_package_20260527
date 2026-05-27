@@ -1,0 +1,40 @@
+\section{Failure Boundary: \task{door-open-v3}}
+\label{sec:failure-boundary}
+
+The previous sections traced a progression: from information loss (Section~\ref{sec:po-identification}), to memory existence versus structure (Section~\ref{sec:memory-structure}), to recovery cost under a finite horizon (Section~\ref{sec:recovery-ablation}). This section uses \task{door-open-v3} to mark where that progression stops. The failure of \task{door-open-v3} is not an incidental negative result---it is the closing boundary of the paper's argument loop.
+
+\subsection{Positioning: Why This Section Is Not Appendix Material}
+
+\task{door-open-v3} could be dismissed as just another failed task. Its proper role is different: it identifies a qualitative boundary beyond the memory--recovery axis studied in this work. The sections above showed that persistent memory addresses the information bottleneck and that budget-aware recovery addresses the execution bottleneck. \task{door-open-v3} reveals a third layer where neither memory nor recovery design is sufficient.
+
+\subsection{Quantitative Diagnosis}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.92\linewidth]{figures/fig_door_open_stage_timeline.pdf}
+  \caption{Stage timeline for \task{door-open-v3}. Across all policies, 97.7\% of episodes pass the grasp criterion and enter the pull phase, but none achieve task success. The pull phase consumes 37--51\% of the episode budget on ineffective pulling motions.}
+  \label{fig:door-open-timeline}
+\end{figure}
+
+\input{tables/table3_failure}
+
+Table~\ref{tab:failure-case} and Figure~\ref{fig:door-open-timeline} provide a three-layer diagnosis of the \task{door-open-v3} failure:
+
+\textbf{Layer 1: Grasp detection passes but physical hold fails.}
+Across all three policies, $97.7\%$ of episodes pass the FSM's grasp criterion and enter the pull phase, yet $0\%$ achieve task success. This $97.7$ percentage-point gap between grasp detection and actual contact establishment indicates a systematic \emph{perception--execution gap}: the FSM's geometric grasp criterion (gripper closed + end-effector proximity) does not imply physical hold on the door handle.
+
+\textbf{Layer 2: The pull phase wastes budget.}
+The pull phase consumes $37$--$51\%$ of the episode step budget (NoMemory: $51.1\%$, TextBuffer: $37.3\%$, StructMemory: $51.1\%$). All of these steps are spent on ineffective pulling motions against a handle that the gripper has never securely grasped.
+
+\textbf{Layer 3: Reward signals are misleading.}
+The pull phase yields positive reward ($\bar{r}_{\text{pull}} \approx 2.29$) despite zero success. MetaWorld's distance-based reward function rewards approach and pulling motions regardless of whether actual contact has been established. This creates a false positive signal: the controller receives reward for actions that are not contributing to task completion.
+
+\subsection{Cross-Policy Consistency}
+
+Critically, all three policies exhibit identical failure patterns on \task{door-open-v3}: $97.7\%$ pull entry rate, $0\%$ success, and comparable step distributions across stages. This cross-policy consistency confirms that the bottleneck has shifted from the information layer (addressed by persistent memory) to the execution layer (requiring contact-aware control or force feedback). Memory cannot fix a perception--execution gap because the gap lies in the physical interaction between gripper and handle, not in the retention of goal information.
+
+\subsection{Boundary Declaration}
+
+The current paper characterizes a specific layered boundary: from observability to memory, and from memory to recovery cost. \task{door-open-v3} marks where this characterization stops. The failure is not a tuning issue---a targeted PD-versus-PI comparison also yielded $0\%$---and it is not a memory issue---all three policies fail identically. It is a contact-dynamics issue that requires capabilities beyond the current rule-based pipeline, such as force feedback, tactile sensing, or contact-state estimation.
+
+This boundary does not invalidate the findings of the previous sections. The identification of PO as the primary bottleneck on simpler tasks, the observation that memory existence dominates memory structure, and the demonstration that recovery cost becomes critical in multi-stage tasks all remain valid within their scope. What \task{door-open-v3} adds is an explicit demarcation of that scope.

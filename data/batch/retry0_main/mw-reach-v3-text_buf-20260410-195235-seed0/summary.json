@@ -1,0 +1,17 @@
+{
+  "exp_id": "mw-reach-v3-text_buf-20260410-195235-seed0",
+  "task": "reach-v3",
+  "policy": "text_buf",
+  "controller": "PD",
+  "episodes": 60,
+  "success_rate": 0.6,
+  "avg_steps": 200.0,
+  "avg_reward": 1821.9333432856629,
+  "avg_grasp_attempts": 0.0,
+  "avg_grasp_success": 0.0,
+  "avg_retry_count": 0.0,
+  "flash_every": 20,
+  "flash_len": 1,
+  "wall_time_sec": 6.526489496231079,
+  "generated": "2026-04-10T19:52:41"
+}

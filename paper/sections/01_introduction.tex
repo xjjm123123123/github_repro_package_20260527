@@ -1,0 +1,26 @@
+\section{Introduction}
+\label{sec:intro}
+
+Real manipulation systems do not enjoy uninterrupted access to task state. In drawer opening, the robot may see the handle pose and desired opening direction on approach, then lose both as the gripper and cabinet frame block the wrist camera during contact. In object pushing, the puck location can be clear before contact and then disappear once the hand closes in, so the controller must continue from a partially remembered object state. In shelf placing, the target shelf slot may be visible during alignment but become hidden by the arm, shelf lip, or the carried object exactly when final placement requires precise correction. In these settings, the engineering problem is rarely ``should we add memory?'' in the abstract. The real question is how to \emph{triage} memory design: is the failure caused by hidden-but-previously-seen information, is a small cache enough to restore performance, or is the task actually demanding a richer state-management mechanism?
+
+This distinction matters because partial observability, policy capacity, memory architecture, and recovery heuristics are often changed together. When they are confounded, a stronger result with a larger recurrent model does not tell us whether the bottleneck was missing information, missing persistence, or simply extra training capacity. Our thesis is that memory in these tasks should be treated not as a monolithic capacity upgrade, but as a targeted state-management decision about which previously observed variables must survive observation loss. We therefore study partial observability in manipulation as a \emph{memory-management pipeline}: first diagnose whether the task depends on retaining previously visible state, then test a lightweight explicit cache-first intervention, and only then ask whether richer memory structure or additional recovery logic is justified.
+
+\paragraph{Research Questions.}
+We therefore ask:
+\begin{enumerate}
+    \item[\textbf{Q1.}] When observations are masked but control and action primitives are fixed, does performance drop because task-relevant state must be preserved across time?
+    \item[\textbf{Q2.}] If so, is a cache-first intervention---simple point-memory persistence of the last visible goal---already sufficient?
+    \item[\textbf{Q3.}] Where is the boundary of that intervention: when do richer memory organization or recovery logic help, and when is the real problem that goal-only memory no longer contains the missing state?
+\end{enumerate}
+
+To answer these questions, we use a controlled setup on 9 MetaWorld \citep{Yu2020} tasks with two PO protocols---\emph{WeakPO} (goal masking) and \emph{StrongPO} (goal + object-position masking)---and three policy variants: \task{NoMemory} (no persistence), \task{TextBuffer} (flat goal cache), and \task{StructMemory} (key-value store). All three share the same finite-state controller, action primitives, and observation protocol; only the retained-state mechanism changes (Figure~\ref{fig:framework}). This lets us isolate a practical triage sequence: whether memory is needed at all, whether a simple cache is enough, and whether failures that survive caching actually point to a different memory boundary.
+
+Our main contributions are:
+
+\begin{enumerate}
+    \item \textbf{We introduce a diagnostic framework for PO manipulation}: under a shared controller and masking protocol, we ask whether retained state is needed, whether a flat cache is sufficient, and whether any residual failure justifies richer memory or recovery.
+    \item \textbf{We identify the boundary of goal-only memory}: contrasting WeakPO and StrongPO distinguishes cache-solvable hidden-goal failures from cases where hidden object or mechanism state pushes the task beyond goal persistence.
+    \item \textbf{We derive a practical intervention rule}: begin with the lowest-cost explicit goal cache, move to object-state access or belief estimation when that fails, and reserve richer structure or recovery logic for the remaining cases.
+\end{enumerate}
+
+Taken together, these results define a practical memory-management pipeline for PO manipulation. First diagnose whether the hidden variable was previously observable and therefore recoverable by persistence. If yes, try the lowest-cost explicit cache intervention before investing in richer memory machinery. If that still fails, check whether the task has crossed the boundary of goal-only memory and now requires object-state access, object buffers, or belief estimation rather than better formatting of the cached goal. We summarize the task-side signal with a \emph{goal-dependency gradient}, but use $G(\tau)$ only as a lightweight screening heuristic for whether memory comparisons are worth running in this benchmark family, not as a universal proxy for memory requirements.

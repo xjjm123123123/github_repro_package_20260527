@@ -1,0 +1,14 @@
+\begin{table}[htbp]
+\centering
+\caption{Failure case analysis: door-open-v3. All policies achieve 0\% success rate. The bottleneck is handle grasping dynamics, not memory or controller design.}
+\label{tab:failure}
+\begin{tabular}{lcccc}
+\toprule
+Policy & Success Rate & Grasp Attempts & Grasp Success & Avg Reward \\
+\midrule
+NoMemory & 0.0\% & 0.00 & 0.00 & 305.3 \\
+TextBuffer & 0.0\% & 0.00 & 0.00 & 305.5 \\
+StructMemory & 0.0\% & 0.00 & 0.00 & 305.3 \\
+\bottomrule
+\end{tabular}
+\end{table}

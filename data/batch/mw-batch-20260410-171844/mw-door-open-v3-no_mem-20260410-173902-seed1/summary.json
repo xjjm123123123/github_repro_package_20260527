@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-door-open-v3-no_mem-20260410-173902-seed1",
+  "task": "door-open-v3",
+  "policy": "no_mem",
+  "episodes": 100,
+  "success_rate": 0.0,
+  "avg_steps": 200.0,
+  "avg_reward": 274.55115228958635,
+  "wall_time_sec": 12.317591428756714,
+  "generated": "2026-04-10T17:39:15"
+}

@@ -1,0 +1,6 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We presented a layered diagnostic of partial observability in manipulation. Memory matters when task-relevant state is hidden and must be preserved across time, but the correct intervention depends on which state is missing. In this task family, that usually means hidden goal information under WeakPO; once that information is retained, the decisive factor is persistence rather than memory organization. The main thesis is therefore not that one buffer universally beats another, but that under goal-centric PO, cache-first mechanisms often solve the active bottleneck.
+
+StrongPO sharpens the boundary: once hidden state includes object or mechanism state, goal caching is insufficient and the problem shifts toward object-state estimation, object buffers, or belief estimation. Future work should test whether relational, multi-object, or long-horizon sequential tasks produce the nonzero $\Delta_{\text{struct}}$ that is absent here, and whether the proposed diagnostic continues to identify when the bottleneck is persistence, estimation, or richer memory organization.

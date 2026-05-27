@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\caption{Ablation study results (success rate \%). P3A: no goal flashing; P3B: no retry; P3C: no XY perturbation.}
+\label{tab:ablation}
+\begin{tabular}{llccc}
+\toprule
+Ablation & Task & NoMemory & TextBuffer & StructMemory \\
+\midrule
+No Flash & pick-place-v3 & 0.0 & 18.9 & 21.1 \\
+No Flash & push-v3 & 0.0 & 71.1 & 70.0 \\
+No Flash & reach-v3 & 0.0 & 65.0 & 65.0 \\
+\midrule
+No Retry & door-open-v3 & — & 0.0 & 0.0 \\
+No Retry & pick-place-v3 & — & 71.7 & 71.7 \\
+\midrule
+No Perturb & door-open-v3 & — & — & 0.0 \\
+No Perturb & pick-place-v3 & — & — & 20.6 \\
+\bottomrule
+\end{tabular}
+\end{table}

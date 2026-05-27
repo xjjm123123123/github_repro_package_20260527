@@ -1,0 +1,27 @@
+==========================================================================================
+TABLE: Partial Observable vs Full Observable — Success Rate Comparison
+==========================================================================================
+
+Task                 Policy       PO (retry=0)       Full Obs           Gap (pp)  
+------------------------------------------------------------------------------------------
+door-open-v3         no_mem       0.0% (±0.0)        —                  —         
+door-open-v3         text_buf     0.0% (±0.0)        —                  —         
+door-open-v3         struct_mem   0.0% (±0.0)        —                  —         
+
+pick-place-v3        no_mem       0.0% (±0.0)        71.7% (±7.1)       +71.7     
+pick-place-v3        text_buf     73.7% (±7.6)       71.7% (±7.1)       -2.0      
+pick-place-v3        struct_mem   73.7% (±7.6)       71.7% (±7.1)       -2.0      
+
+push-v3              no_mem       0.0% (±0.0)        73.9% (±28.7)      +73.9     
+push-v3              text_buf     66.7% (±25.1)      73.9% (±28.7)      +7.2      
+push-v3              struct_mem   64.7% (±26.1)      73.9% (±28.7)      +9.2      
+
+reach-v3             no_mem       0.0% (±0.0)        80.0% (±1.4)       +80.0     
+reach-v3             text_buf     69.7% (±6.1)       80.0% (±1.4)       +10.3     
+reach-v3             struct_mem   69.7% (±6.1)       80.0% (±1.4)       +10.3     
+
+
+KEY INSIGHT:
+  If NoMemory improves significantly under Full-Observable (approaching
+  TextBuffer/StructMemory levels), this confirms that the performance gap
+  is driven by partial observability, not intrinsic policy differences.

@@ -1,0 +1,11 @@
+{
+  "exp_id": "mw-push-v3-no_mem-20260410-172246-seed3",
+  "task": "push-v3",
+  "policy": "no_mem",
+  "episodes": 100,
+  "success_rate": 0.58,
+  "avg_steps": 200.0,
+  "avg_reward": 804.8711538305839,
+  "wall_time_sec": 19.443013668060303,
+  "generated": "2026-04-10T17:23:05"
+}

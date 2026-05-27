@@ -1,0 +1,66 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+    x=1cm, y=1cm,
+    sharedbox/.style={
+        draw,
+        rounded corners=3pt,
+        line width=0.5pt,
+        minimum width=8.8cm,
+        minimum height=0.95cm,
+        align=center,
+        font=\footnotesize,
+        inner sep=4pt
+    },
+    memorybox/.style={
+        draw,
+        rounded corners=3pt,
+        line width=0.5pt,
+        minimum width=2.65cm,
+        minimum height=1.0cm,
+        align=center,
+        font=\footnotesize,
+        inner sep=4pt
+    },
+    groupbox/.style={
+        draw,
+        rounded corners=4pt,
+        line width=0.5pt,
+        minimum width=10.2cm,
+        minimum height=2.45cm,
+        fill=black!2
+    },
+    note/.style={
+        draw,
+        rounded corners=2pt,
+        line width=0.35pt,
+        fill=white,
+        text=black!70,
+        font=\scriptsize\bfseries,
+        inner sep=2.8pt
+    },
+    arr/.style={-{Stealth[length=4pt]}, semithick},
+]
+\node[sharedbox, fill=green!8] (env) at (0,0) {\textbf{MetaWorld Environment}\\[-2pt]\scriptsize observations};
+
+\node[sharedbox, fill=yellow!12] (po) at (0,-1.5) {\textbf{Shared PO Protocol}\\[-2pt]\scriptsize WeakPO: hide goal\\[-1pt]\scriptsize StrongPO: hide goal + object};
+
+\node[groupbox] (vargrp) at (0,-3.95) {};
+\node[note, anchor=west] (variants) at (-4.65,-3.05) {Only varied component};
+
+\node[memorybox, fill=red!12] (nm) at (-3.15,-4.2) {\textbf{\task{NoMemory}}\\[-2pt]\scriptsize Q1: necessity};
+\node[memorybox, fill=blue!12] (tb) at (0,-4.2) {\textbf{\task{TextBuffer}}\\[-2pt]\scriptsize Q2: sufficiency};
+\node[memorybox, fill=green!14, minimum width=2.95cm] (sm) at (3.15,-4.2) {\textbf{\task{StructMemory}}\\[-2pt]\scriptsize Q3: structure};
+
+\node[sharedbox, fill=gray!12] (fsm) at (0,-6.35) {\textbf{Shared FSM Controller}\\[-2pt]\scriptsize shared action primitives};
+
+\node[sharedbox, fill=white, minimum width=3.3cm, minimum height=0.78cm] (act) at (0,-7.55) {\textbf{Action Output}\\[-2pt]\scriptsize $a \in \mathbb{R}^4$};
+
+\draw[arr] (env) -- (po);
+\draw[arr] (po.south) -- (vargrp.north);
+\draw[arr] (vargrp.south) -- (fsm.north);
+\draw[arr] (fsm) -- (act);
+\end{tikzpicture}
+\caption{Controlled comparison framework. All variants share the same MetaWorld environment, partial-observability protocol, FSM controller, and action primitives; only the memory module varies. The three variants correspond to the diagnostic questions: \task{NoMemory} (Q1, necessity), \task{TextBuffer} (Q2, sufficiency), and \task{StructMemory} (Q3, beyond flat persistence). WeakPO hides only the goal, while StrongPO hides both the goal and the object.}
+\label{fig:framework}
+\end{figure}

@@ -1,0 +1,17 @@
+{
+  "exp_id": "mw-push-v3-text_buf-20260415-120941-seed0",
+  "task": "push-v3",
+  "policy": "text_buf",
+  "controller": "PD",
+  "episodes": 60,
+  "success_rate": 0.9166666666666666,
+  "avg_steps": 200.0,
+  "avg_reward": 1428.6339289352259,
+  "avg_grasp_attempts": 0.0,
+  "avg_grasp_success": 0.0,
+  "avg_retry_count": 0.0,
+  "flash_every": 20,
+  "flash_len": 1,
+  "wall_time_sec": 11.91506552696228,
+  "generated": "2026-04-15T12:09:53"
+}

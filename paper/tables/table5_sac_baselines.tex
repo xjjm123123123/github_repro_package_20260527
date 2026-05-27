@@ -1,0 +1,33 @@
+\begin{table}[t]
+\centering
+\caption{Learned-policy comparison under FO, WeakPO, and StrongPO. SAC-MLP is trained under FO for 2M steps; SAC-LSTM under WeakPO for 2M steps. Entries are success rates (\%), reported as mean $\pm$ std over 3 seeds $\times$ 60 episodes unless marked $^\dagger$ (single seed). WeakPO masks goal position; StrongPO also masks object position (\texttt{flash\_every}$=$5, \texttt{flash\_len}$=$1).}
+\label{tab:sac_baselines}
+\begin{tabular}{l ccc}
+\toprule
+Task & Condition & SAC-MLP (FO-train) & SAC-LSTM (PO-train) \\
+\midrule
+\multirow{3}{*}{Reach-v3}
+ & FO        & 78.9$\pm$6.0  & 47.8$\pm$9.0  \\
+ & WeakPO    &  0.0$\pm$0.0  & 42.2$\pm$5.9  \\
+ & StrongPO  &  0.0$\pm$0.0  & 29.4$\pm$6.5  \\
+\midrule
+\multirow{3}{*}{Faucet-Open-v3}
+ & FO        & 100.0$\pm$0.0 & 74.4$\pm$35.6 \\
+ & WeakPO    &   1.1$\pm$1.9 & 72.8$\pm$41.4 \\
+ & StrongPO  &   5.0$\pm$8.7 &   1.1$\pm$1.9 \\
+\midrule
+\multirow{3}{*}{Door-Open-v3$^\dagger$}
+ & FO        & 100.0 (n=1)   & ---            \\
+ & WeakPO    &   0.0 (n=1)   & ---            \\
+ & StrongPO  &   0.0 (n=1)   & ---            \\
+\midrule
+\multirow{3}{*}{Drawer-Open-v3$^\dagger$}
+ & FO        & 100.0 (n=1)   & ---            \\
+ & WeakPO    &  20.0 (n=1)   & ---            \\
+ & StrongPO  &   0.0 (n=1)   & ---            \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize SAC-MLP collapses under PO on all four tasks. SAC-LSTM shows high variance on Faucet-Open-v3 and trades FO performance for partial PO robustness on Reach-v3. GoalBuffer recovers WeakPO to 82--100\% without retraining (Table~\ref{tab:goal_buffer}). $^\dagger$ denotes single-seed SAC-MLP results; Pick-Place/Push/Button-Press are excluded because FO learning does not become reliable within 2M steps.
+\end{flushleft}
+\end{table}

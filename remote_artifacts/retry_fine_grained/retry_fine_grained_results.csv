@@ -1,0 +1,6 @@
+task,policy,max_retries,mean,std,n_seeds
+pick-place-v3,text_buf,0,0.7467,0.0545,5
+pick-place-v3,text_buf,1,0.5,0.0773,5
+pick-place-v3,text_buf,2,0.32,0.0506,5
+pick-place-v3,text_buf,3,0.2033,0.0431,5
+pick-place-v3,text_buf,5,0.17,0.0274,5

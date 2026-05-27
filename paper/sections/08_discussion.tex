@@ -1,0 +1,54 @@
+\section{Discussion: A Layered View Of Bottlenecks In PO Manipulation}
+\label{sec:discussion}
+
+The experimental results in this paper support a layered interpretation of performance bottlenecks under partial observability. Rather than treating memory necessity, memory structure, and recovery cost as parallel findings, this section organizes them into a single progression and draws out the implications.
+
+\subsection{The Goal-Dependency Gradient}
+
+The contact-rich extension (Section~\ref{sec:contact-rich}) reveals that the FO--PO gap is not a uniform property across tasks but follows a \emph{goal-dependency gradient} (Table~\ref{tab:goal-dependency}). Tasks whose critical manipulation stages require goal information to determine action direction---pulling a handle toward a target, moving an object to a shelf---exhibit large gaps (89--100pp). Tasks where the action has a strong prior component---a fixed downward press, a dominant rotational direction---exhibit small or zero gaps.
+
+This gradient has a practical implication: the benefit of adding memory under PO is predictable from the task's control structure. If a task's manipulation stages can be executed with fixed or locally-computed actions, memory provides little marginal value. If the stages require goal-relative computation, memory becomes necessary. This predictability extends the Memory Necessity Curve from the PO-severity axis (how often the goal is visible) to the task-structure axis (how much the action depends on the goal).
+
+\subsection{Memory Existence Dominates Memory Structure}
+
+Across all nine tasks (three original plus six contact-rich) and all observation severities, \task{TextBuffer} and \task{StructMemory} perform identically to within statistical noise. This is not a negative result---it is a boundary finding. The current task suite requires only \emph{point memory}: retaining a single goal position across a goal-visibility gap. For this memory demand, a lightweight text buffer is sufficient; structured representations offer no additional benefit.
+
+We conjecture that memory structure would begin to matter for tasks requiring \emph{sequential memory} (remembering the order of sub-goals), \emph{relational memory} (tracking spatial relationships between multiple objects), or \emph{episodic memory} (recalling which recovery attempts have already failed). Designing tasks that isolate these demands is a natural next step.
+
+\subsection{The Layered Bottleneck Progression}
+
+The core finding is that as task complexity increases, the dominant bottleneck shifts in a layered progression (Figure~\ref{fig:layered-bottlenecks}):
+
+\begin{enumerate}
+\item \textbf{Information loss} (Layer 1): Under PO, the goal becomes intermittently visible. Tasks with high goal-dependency collapse without memory; tasks with low goal-dependency are largely unaffected.
+
+\item \textbf{Memory existence} (Layer 2): Once the information-loss bottleneck is identified, the question becomes whether memory representation matters. For point-memory demands, it does not: \task{TextBuffer} $\approx$ \task{StructMemory}.
+
+\item \textbf{Recovery cost} (Layer 3): For multi-stage tasks under a finite horizon, naive rollback-and-retry can consume the step budget on re-traversal rather than progress. Disabling retry (\texttt{retry=0} vs.\ \texttt{retry=3}) improves \task{pick-place-v3} from 21.0\% to 73.7\%.
+
+\item \textbf{Contact dynamics} (Layer 4): The persistent failure on \task{door-open-v3} marks a boundary where the bottleneck shifts to physical interaction. The 97.7\% pull entry rate with 0\% success indicates a perception--execution gap that is orthogonal to both memory and recovery.
+\end{enumerate}
+
+\subsection{Screening Value Of The Memory Necessity Curve}
+
+The Memory Necessity Curve (Figure~\ref{fig:flash-every}) provides more than a confirmation of the controlled PO intervention. It offers a screening tool: for a given task and PO severity, the curve screens for whether a memory-free controller can achieve non-trivial performance. The sharp threshold observed for \task{NoMemory} on \task{reach-v3} and \task{push-v3}---partial function at flash=5, near-zero at flash=10, complete collapse at flash$\geq$20---suggests that the transition from ``memory helpful'' to ``memory necessary'' can occur over a narrow range of observation frequencies.
+
+This prediction has practical implications. When deploying rule-based controllers under intermittent observability, the curve can inform whether investing in memory infrastructure is necessary or whether the observation frequency is sufficient for memory-free operation.
+
+\subsection{Implications Of The Perception--Execution Gap}
+
+The door-open-v3 diagnosis reveals a failure mode qualitatively different from the information and recovery bottlenecks. The 97.7\% pull entry rate combined with 0\% success indicates a systematic perception--execution gap: the grasp criterion reports contact establishment even when the gripper does not physically hold the handle. This implies that distance-based grasp detection can be sufficient for simple objects (e.g., cubes in pick-place-v3) but fails for thin handles and other contact-rich geometries.
+
+The second implication is methodological. The pull phase yields positive reward ($\bar{r}_{\text{pull}} \approx 2.29$) despite zero success, highlighting that distance-based reward functions can provide false positive feedback in contact-rich tasks. This constitutes a form of \emph{reward hacking} \citep{Amodei2016}: the controller is inadvertently rewarded for approach motions that are geometrically proximal to the goal but physically ineffective, a dynamic analogous to potential-based shaping functions that can over-reward intermediate states without guaranteeing task completion \citep{Ng1999}. Any approach that relies on reward shaping should therefore treat door-open-style tasks as requiring explicit contact-state modeling rather than more memory or more retry.
+
+\subsection{Generalizability}
+
+The layered bottleneck framework is developed here for rule-based controllers under a flash-based PO protocol, but the underlying logic is not specific to this setting. We conjecture that a similar progression---information loss, memory existence, recovery cost, contact dynamics---would emerge in learned controllers under visual PO, with the following modifications:
+
+\begin{itemize}
+  \item \textbf{Learned controllers} may implicitly encode short-term history in recurrent or attention-based architectures, shifting the memory-existence threshold but not eliminating it.
+  \item \textbf{Visual PO} introduces perceptual ambiguity on top of goal masking, potentially compressing the severity gradient and making memory-free operation infeasible at shorter intervals than our flash-every ablation suggests.
+  \item \textbf{Contact-rich tasks} are expected to remain a hard boundary regardless of controller type, as the perception--execution gap identified in \task{door-open-v3} stems from physical interaction rather than information processing.
+\end{itemize}
+
+Empirically characterizing the necessity-threshold curve for learned controllers under visual PO is a natural next step and constitutes a direct extension of the methodology introduced here.
